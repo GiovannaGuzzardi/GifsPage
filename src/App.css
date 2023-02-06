@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  border: none;
 }
 
 html {
@@ -56,12 +57,20 @@ body p {
   gap: 1vh 1vw
 }
 
+.flex {
+  display: flex;
+  align-items: center;
+}
+
+
+
 @media (min-width:873px) {
+
+
   .navBar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: antiquewhite;
     height: 15vh;
   }
 
@@ -69,6 +78,67 @@ body p {
     width: 10vh;
   }
 
+
+  .titulo {
+    padding: 1vw;
+    font-size: 6rem;
+  }
+
+  .inicial {
+    padding: 3vh;
+  }
+
+  .inicial h2 {
+    padding: 0.5vw;
+  }
+
+  .gifPoke {
+    height: 25vw;
+    padding: 5vh;
+  }
+
+  .Button {
+    border: none;
+    outline-style: none;
+    text-align: center;
+    background: transparent;
+    transition: 0.10s ease-in;
+    color: aliceblue;
+    margin: 0.5vw;
+    padding: 0.3vw;
+  }
+
+  .Button:hover {
+    border: 1px solid;
+    border-radius: 100%;
+    border-color: rgb(255, 0, 0);
+  }
+
+  .Button i {
+    font-size: 4rem;
+    margin: 0;
+  }
+
+  .input::placeholder {
+    padding: 50px;
+  }
+
+  .InputI {
+    width: 0;
+    height: 0;
+    background: transparent;
+    border: 0;
+  }
+
+  .Input {
+    height: 5vh;
+    border-radius: 5px;
+    border-width: 1px;
+    width: 23vw;
+    transition: 0.10s ease-in;
+    padding: 1vw;
+    font-size: 2rem;
+  }
 
   .listGif {
     grid-template-columns: repeat(3, 1fr);
@@ -79,6 +149,9 @@ body p {
   }
 
   .itemGif {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     height: 100%;
     width: 100%;
   }
@@ -96,6 +169,7 @@ body p {
     align-items: center;
     color: red;
     font-size: 1.9rem;
+    margin-bottom: 0;
   }
 
   .like i:hover {
