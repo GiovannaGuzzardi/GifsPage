@@ -1,25 +1,62 @@
-import logo from './logo.svg';
 import './App.css';
+import React, { useState } from "react";
+import Img from './componentes/ListGif/ListGif';
+import LikeProvider from './context/curtidas';
+import pokeball from '../src/pokeball.png'
 
 function App() {
+
+  const [query, setQuery] = useState("");
+  const [gifs, setGifs] = useState("");
+
+
+  const api = {
+    key: "HqE5P3JKqV9FpldQJmbIIWW23vJg9z5s",
+    acao: "search",
+    busca: query,
+    limite: 6,
+  };
+
+
+
+
+  const consumer = (evt) => {
+    fetch(`//api.giphy.com/v1/gifs/${api.acao}?api_key=${api.key}&q=${api.busca}&limit=${api.limite}&offset=0&rating=g&lang=pt`)
+      .then((res) => res.json())
+      .then((result) => {
+        console.log(result)
+        setGifs(result)
+        setQuery("")
+      })
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <LikeProvider>
+      <div className="app">
+        <main className="main">
+          <div className='navBar'>
+            <div>
+              <img className='iconPoke' src={pokeball} alt="icone" />
+              <h1></h1>
+            </div>
+            <div>
+              <input
+                type="text"
+                onChange={(e) => setQuery(e.target.value)}
+                value={query}
+                placeholder="Pesquisa..."
+              />
+              <button onClick={consumer} type="button">Click Me!</button>
+            </div>
+          </div>
+          {gifs.data && (
+            <div className='listGif'>
+              <Img arr={gifs.data} />
+            </div>)
+          }
+        </main>
+      </div >
+    </LikeProvider>
   );
 }
-
 export default App;
