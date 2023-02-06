@@ -25,23 +25,22 @@ function App() {
     if (status === false) {
       document.getElementById("Input").focus()
       setStatus(true)
-
     }
     else {
       if (query === "") {
-        alert("insira um valor valido")
-        return
+        alert("Você buscou um fantama! não tem nada ai!")
+        api.busca = "pokemon fantasma"
+        api.limite = 3
       }
-      else {
-        fetch(`//api.giphy.com/v1/gifs/${api.acao}?api_key=${api.key}&q=${api.busca}&limit=${api.limite}&offset=0&rating=g&lang=pt`)
-          .then((res) => res.json())
-          .then((result) => {
-            console.log(result)
-            setGifs(result)
-            setQuery("")
-          })
-        setStatus(false)
-      }
+      console.log(api.busca)
+      fetch(`//api.giphy.com/v1/gifs/${api.acao}?api_key=${api.key}&q=${api.busca}&limit=${api.limite}&offset=0&rating=g&lang=pt`)
+        .then((res) => res.json())
+        .then((result) => {
+          console.log(result)
+          setGifs(result)
+          setQuery("")
+        })
+      setStatus(false)
     }
   }
 
