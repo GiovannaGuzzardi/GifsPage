@@ -106,6 +106,7 @@ body p {
     color: aliceblue;
     margin: 0.5vw;
     padding: 0.3vw;
+    transition: 0.3s ease-in;
   }
 
   .Button:hover {

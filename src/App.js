@@ -29,8 +29,8 @@ function App() {
     else {
       if (query === "") {
         alert("Você buscou um fantama! não tem nada ai!")
-        api.busca = "pokemon fantasma"
-        api.limite = 3
+        api.busca = "Gastly"
+        api.limite = 6
       }
       console.log(api.busca)
       fetch(`//api.giphy.com/v1/gifs/${api.acao}?api_key=${api.key}&q=${api.busca}&limit=${api.limite}&offset=0&rating=g&lang=pt`)
